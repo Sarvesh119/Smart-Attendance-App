@@ -27,13 +27,21 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:5173' || 'https://smart-attendance-app-snowy.vercel.app',
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
-  })
-);
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://smart-attendance-app-snowy.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
+  credentials: true
+}));
 
 app.get('/', (_, res) => res.send('Smart Attendance API'));
 app.use('/api/auth', authRoutes);
