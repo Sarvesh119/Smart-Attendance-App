@@ -29,7 +29,8 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://smart-attendance-app-snowy.vercel.app"
+  "https://smart-attendance-app-snowy.vercel.app",
+  "https://smart-attendance-app-git-main-sarveshs-projects-23626ae2.vercel.app"
 ];
 
 app.use(cors({

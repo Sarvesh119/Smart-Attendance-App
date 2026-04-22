@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "https://smart-attendance-app-bi06.onrender.com/api",
+  baseURL: "https://smart-attendance-app-bi06.onrender.com/api",
   withCredentials: true
 });
 
